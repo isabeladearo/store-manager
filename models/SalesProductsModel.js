@@ -7,4 +7,12 @@ const create = (saleId, productId, quantity) =>
     [saleId, productId, quantity],
   );
 
-module.exports = { create };
+const update = (saleId, productId, quantity) =>
+  connection.execute(
+    `UPDATE sales_products
+      SET quantity = ?
+      WHERE sale_id = ? AND product_id = ?`,
+    [quantity, saleId, productId],
+  );
+
+module.exports = { create, update };
