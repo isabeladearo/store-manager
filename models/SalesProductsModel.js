@@ -15,4 +15,7 @@ const update = (saleId, productId, quantity) =>
     [quantity, saleId, productId],
   );
 
-module.exports = { create, update };
+const remove = (id) =>
+  connection.execute('DELETE FROM sales_products WHERE sale_id = ?', [id]);
+
+module.exports = { create, update, remove };

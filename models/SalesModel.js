@@ -31,4 +31,7 @@ const create = async () => {
   return row.insertId;
 };
 
-module.exports = { getAll, getById, create };
+const remove = (id) =>
+  connection.execute('DELETE FROM sales WHERE id = ?', [id]);
+
+module.exports = { getAll, getById, create, remove };
