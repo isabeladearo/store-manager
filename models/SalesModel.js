@@ -23,4 +23,12 @@ const getById = (id) =>
     [id],
   );
 
-module.exports = { getAll, getById };
+const create = async () => {
+  const [row] = await connection.execute(
+    'INSERT INTO sales (date) VALUES (NOW())',
+  );
+
+  return row.insertId;
+};
+
+module.exports = { getAll, getById, create };
