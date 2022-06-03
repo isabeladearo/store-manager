@@ -23,6 +23,18 @@ const getById = (id) =>
     [id],
   );
 
+const getByIdAndProduct = (saleId, productId) =>
+  connection.execute(
+    `SELECT 
+      sp.product_id AS 'productId',
+      sp.quantity AS 'quantity',
+      s.date AS 'date'
+    FROM sales_products sp
+    INNER JOIN sales s ON s.id = sp.sale_id
+    WHERE s.id = ? AND sp.product_id = ?`,
+    [saleId, productId],
+  );
+
 const create = async () => {
   const [row] = await connection.execute(
     'INSERT INTO sales (date) VALUES (NOW())',
@@ -34,4 +46,4 @@ const create = async () => {
 const remove = (id) =>
   connection.execute('DELETE FROM sales WHERE id = ?', [id]);
 
-module.exports = { getAll, getById, create, remove };
+module.exports = { getAll, getById, getByIdAndProduct, create, remove };

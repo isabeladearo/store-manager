@@ -20,6 +20,10 @@ const getById = async (req, res) => {
 const create = async (req, res) => {
   const createdSale = await SalesService.create(req.body);
 
+  if (!createdSale) {
+    res.status(422).json({ message: 'Such amount is not permitted to sell' });
+  }
+
   return res.status(201).json(createdSale);
 };
 
@@ -27,6 +31,10 @@ const update = async (req, res) => {
   const { id } = req.params;
 
   const updatedProductSale = await SalesService.update(id, req.body);
+
+  if (!updatedProductSale) {
+    res.status(422).json({ message: 'Such amount is not permitted to sell' });
+  }
 
   return res.status(200).json(updatedProductSale);
 };

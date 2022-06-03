@@ -27,4 +27,19 @@ const remove = (id) => {
   connection.execute('DELETE FROM products WHERE id = ?', [id]);
 };
 
-module.exports = { getAll, getById, getByName, create, update, remove };
+const updateQuantity = (id, quantity) => {
+  connection.execute(
+    'UPDATE products SET quantity = quantity + ? WHERE id = ?',
+    [quantity, id],
+  );
+};
+
+module.exports = {
+  getAll,
+  getById,
+  getByName,
+  create,
+  update,
+  remove,
+  updateQuantity,
+};
