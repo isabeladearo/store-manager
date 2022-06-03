@@ -1,5 +1,6 @@
 const express = require('express');
 const { SalesController } = require('../controllers');
+const { validateSales } = require('../middlewares');
 
 const router = express.Router();
 
@@ -7,9 +8,9 @@ router.get('/', SalesController.getAll);
 
 router.get('/:id', SalesController.getById);
 
-router.post('/', SalesController.create);
+router.post('/', validateSales, SalesController.create);
 
-router.put('/:id', SalesController.update);
+router.put('/:id', validateSales, SalesController.update);
 
 router.delete('/:id', SalesController.remove);
 
