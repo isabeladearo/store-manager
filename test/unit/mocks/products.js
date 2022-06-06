@@ -8,7 +8,7 @@ const GET_BY_ID = [PRODUCT_1];
 
 const PRODUCT_TO_CREATE = { "name": "produto", "quantity": 10 };
 
-const CREATED_PRODUCT =   { "id": 4, "name": "produto", "quantity": 10 };
+const CREATED_PRODUCT = { "id": 4, "name": "produto", "quantity": 10 };
 
 const SUCCESSFULLY_CREATED = {
   fieldCount: 0,
@@ -42,9 +42,9 @@ const SUCCESSFULLY_REMOVED = {
 
 const QUANTITY_TO_UPDATE = { "id": 1, "quantity": 30 }
 
-const PRODUCT_TO_UPDATE = { "name": "Martelo de Thor", "quantity": 5 };
+const PRODUCT_TO_UPDATE = { "name": "Martelo de Thor", "quantity": 100 };
 
-const UPDATED_PRODUCT = { "id": 1, "name": "Martelo de Thor", "quantity": 5 };
+const UPDATED_PRODUCT = { "id": 1, "name": "Martelo de Thor", "quantity": 100 };
 
 module.exports = {
   GET_ALL_PRODUCTS,

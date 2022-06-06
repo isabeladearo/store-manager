@@ -11,6 +11,7 @@ const create = async (products) => {
       if (inStock[0].quantity > quantity) return true;
       return false;
     })));
+  console.log(productsInStock);
 
   if (productsInStock.includes(false)) return false;
 
