@@ -9,9 +9,9 @@ const create = async ({ name, quantity }) => {
 
   if (products.length) return false;
   
-  const id = await ProductsModel.create(name, quantity);
+  const [rows] = await ProductsModel.create(name, quantity);
 
-  return { id, name, quantity };
+  return { id: rows.insertId, name, quantity };
 };
 
 const update = async (id, { name, quantity }) => {

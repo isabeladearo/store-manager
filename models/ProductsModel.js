@@ -8,31 +8,26 @@ const getById = (id) =>
 const getByName = (name) =>
   connection.execute('SELECT * FROM products WHERE name = ?', [name]);
 
-const create = async (name, quantity) => {
-  const [rows] = await connection.execute(
+const create = (name, quantity) =>
+  connection.execute(
     'INSERT INTO products (name, quantity) VALUES (?,?)',
     [name, quantity],
   );
 
-  return rows.insertId;
-};
-
-const update = (id, name, quantity) =>
+const update = (id, name, quantity) => 
   connection.execute(
     'UPDATE products SET name = ?, quantity = ? WHERE id = ?',
     [name, quantity, id],
   );
 
-const remove = (id) => {
+const remove = (id) => 
   connection.execute('DELETE FROM products WHERE id = ?', [id]);
-};
 
-const updateQuantity = (id, quantity) => {
+const updateQuantity = (id, quantity) => 
   connection.execute(
     'UPDATE products SET quantity = quantity + ? WHERE id = ?',
     [quantity, id],
   );
-};
 
 module.exports = {
   getAll,

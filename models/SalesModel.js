@@ -35,13 +35,10 @@ const getByIdAndProduct = (saleId, productId) =>
     [saleId, productId],
   );
 
-const create = async () => {
-  const [row] = await connection.execute(
+const create = () => 
+  connection.execute(
     'INSERT INTO sales (date) VALUES (NOW())',
   );
-
-  return row.insertId;
-};
 
 const remove = (id) =>
   connection.execute('DELETE FROM sales WHERE id = ?', [id]);

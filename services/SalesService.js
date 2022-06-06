@@ -14,15 +14,15 @@ const create = async (products) => {
 
   if (productsInStock.includes(false)) return false;
 
-  const createdSaleId = await SalesModel.create();
+  const createdSale = await SalesModel.create();
 
   await Promise.all(products.map(({ productId, quantity }) =>
-    SalesProductsModel.create(createdSaleId, productId, quantity)));
+    SalesProductsModel.create(createdSale[0].insertId, productId, quantity)));
   
   await Promise.all(products.map(({ productId, quantity }) => 
     ProductsModel.updateQuantity(productId, quantity * -1)));
 
-  return { id: createdSaleId, itemsSold: products };
+  return { id: createdSale[0].insertId, itemsSold: products };
 };
 
 const update = async (id, product) => {

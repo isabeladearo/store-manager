@@ -1,6 +1,6 @@
 const connection = require('../db/connection');
 
-const create = (saleId, productId, quantity) =>
+const create = (saleId, productId, quantity) => 
   connection.execute(
     `INSERT INTO sales_products (sale_id, product_id, quantity)
       VALUES (?, ?, ?)`,
@@ -16,6 +16,6 @@ const update = (saleId, productId, quantity) =>
   );
 
 const remove = (id) =>
-  connection.execute('DELETE FROM sales_products WHERE sale_id = ?', [id]);
+  connection.execute('DELETE FROM sales_products WHERE sale_id = ?', [id]); 
 
 module.exports = { create, update, remove };
