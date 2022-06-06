@@ -56,4 +56,25 @@ describe('🟢 Services | Sales', () => {
       );
     });
   });
+
+  describe('create', () => {
+
+    describe('quando não existe a quantidade do produto no estoque', () => {
+
+      before(() => {  
+        sinon.stub(ProductsModel, 'getById').resolves([[{ product_id: 1, quantity: 0 }]]);
+      });
+    
+      after(() => {
+        ProductsModel.getById.restore();
+      });
+  
+      it('deve retornar falso', async () => {
+        const response = await SalesService.create([{ product_id: 1, quantity: 2 }]);
+      
+        expect(response).to.be.a("boolean");
+        expect(response).to.be.false;
+      });
+    });
+  });
 });

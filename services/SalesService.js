@@ -11,11 +11,12 @@ const create = async (products) => {
       if (inStock[0].quantity > quantity) return true;
       return false;
     })));
-  console.log(productsInStock);
 
   if (productsInStock.includes(false)) return false;
 
   const createdSale = await SalesModel.create();
+
+  console.log(createdSale);
 
   await Promise.all(products.map(({ productId, quantity }) =>
     SalesProductsModel.create(createdSale[0].insertId, productId, quantity)));

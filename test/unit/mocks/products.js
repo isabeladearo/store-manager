@@ -59,4 +59,5 @@ module.exports = {
   QUANTITY_TO_UPDATE,
   PRODUCT_TO_UPDATE,
   UPDATED_PRODUCT,
+  PRODUCT_2,
 }
